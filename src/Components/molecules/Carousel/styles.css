@@ -1,0 +1,23 @@
+.carouselRfp {
+    & .slider-wrapper {
+        width: 90%;
+    }
+    & .slide {
+        padding: 0 .5rem;
+    }
+}
+.indicators {
+    margin: .5rem 0 0;
+    text-align: center;
+    width: 100%;
+        & span svg {
+            cursor: pointer;
+            font-size: 1rem;
+            color: rgba(0, 0, 0, 0.08);
+        }
+
+        & span.active svg,
+        & span svg hover {
+            color: '#000';
+        }
+}

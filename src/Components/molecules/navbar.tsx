@@ -1,12 +1,14 @@
+"use client"
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
+import { useState } from 'react'
+import { Link } from 'react-scroll/modules'
 
 const navigation = [
-  { name: 'Home', href: '#Home', current: false },
-  { name: 'Services', href: '#Services', current: true },
-  { name: 'Packages', href: '#Packages', current: false },
-  { name: 'Contact Us', href: '#ContactUs', current: false },
+  { name: 'Home', href: 'Home', current: true },
+  { name: 'Services', href: 'Services', current: false },
+  { name: 'Packages', href: 'Packages', current: false },
+  { name: 'Contact Us', href: 'ContactUs', current: false },
 ]
 
 function classNames(...classes: string[]) {
@@ -14,6 +16,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const [current, setCurrent]= useState(navigation[0].href)
   return (
     <Disclosure as="nav" className="bg-white">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -40,17 +43,20 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
+                {navigation.map((item, index) => (
+                  <button key={index}>
+                    <Link
+                    activeClass={current === item.href ? 'active': ''}
+                    to={item.href} spy={true} smooth={true} offset={50} duration={500}
                     className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white',
+                      current === item.href ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-base',
                     )}
+                    onClick={() => setCurrent(() => item.href)}
                   >
                     {item.name}
                   </Link>
+                  </button>
                 ))}
               </div>
             </div>

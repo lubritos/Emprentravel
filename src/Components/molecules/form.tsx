@@ -4,7 +4,7 @@ import TextFile from "../atoms/TextFile";
 
 const Form = ()=>{
     return(
-        <div className="py-4 flex flex-col items-center">
+        <div className="py-4 flex flex-col items-center leading-4">
             <TextFile/>
             <Textarea/>
             <Button> enviar</Button>

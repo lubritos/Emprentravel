@@ -51,7 +51,7 @@ export default function Home() {
         >
         <div className="absolute bg-zinc-800 w-full opacity-60 h-full p-4" />
         <div className="absolute z-10">
-          <h2 className="text-2xl capitalize font-bold m-4 text-center" >Contact us</h2>
+          <h2 className="text-2xl capitalize font-bold m-4 text-center leading-8 p-4" >Contact us</h2>
           <Form/>
         </div>
       </div>
